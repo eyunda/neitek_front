@@ -1,0 +1,408 @@
+/* ========= Altura global del proyecto ========= */
+html, body {
+  height: 100%;
+  min-height: 100dvh;        /* altura real en móviles */
+  margin: 0;
+}
+
+#__next {
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Área principal que se estira */
+.page {
+  flex: 1 1 auto;            /* antes 2 2 auto → innecesario */
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+
+/* ========= Login 70% / 30% ========= */
+.auth-layout {
+  min-height: 100vh;
+  display: flex;
+}
+.auth-bg {
+  flex: 0 0 70%;
+  background-image: url('/neitek.png'); /* tu imagen */
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  position: relative;
+}
+.auth-bg::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(0deg, rgba(0,0,0,.25), rgba(0,0,0,.25));
+}
+.auth-panel {
+  flex: 0 0 30%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 32px 24px;
+  background: #fff;
+}
+.auth-card {
+  width: 100%;
+  max-width: 480px;           /* un poco más ancho que 420px */
+}
+
+/* Avatar redondo */
+.auth-avatar {
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  background: #0d6efd;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 14px auto;
+  box-shadow: 0 6px 20px rgba(13,110,253,.25);
+  color: #fff;
+}
+.auth-avatar.img {
+  background: #fff;
+  overflow: hidden;
+  border: 2px solid #0d6efd;
+}
+.auth-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ========= Inputs con icono + ojito ========= */
+.input-with-icon { position: relative; }
+.input-with-icon .form-control {
+  border-radius: 12px;
+  padding-left: 2.5rem;
+  padding-right: 2.75rem;    /* espacio para ojito */
+}
+.input-with-icon .icon-left {
+  position: absolute;
+  left: .9rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #6c757d;
+  font-size: 1.2rem;
+  pointer-events: none;
+}
+.input-with-icon .toggle-eye-inside {
+  position: absolute;
+  right: .35rem;
+  top: 50%;
+  transform: translateY(-50%);
+  border: none;
+  background: transparent;
+  width: 42px;
+  height: 42px;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #6c757d;
+  font-size: 1.3rem;
+}
+.input-with-icon .toggle-eye-inside:hover { background: #f1f3f5; }
+
+/* Campos más altos (email/contraseña) */
+.form-control-tall {
+  height: 3.6rem;
+  padding: 0.9rem 1rem;
+  font-size: 1.0625rem;
+  border-radius: 0.9rem;
+}
+.input-with-icon .form-control-tall {
+  padding-left: 2.75rem;     /* respeta icono izq */
+  padding-right: 3rem;       /* respeta ojito */
+}
+
+/* Botón login grande */
+.btn-login-lg {
+  padding: 0.9rem 1.25rem;   /* antes 0.4 → se veía pequeño */
+  font-size: 1.125rem;
+  border-radius: 0.8rem;
+  box-shadow: 0 10px 20px rgba(13,110,253,.15);
+}
+.btn-login-lg:hover { box-shadow: 0 12px 26px rgba(13,110,253,.22); }
+
+/* Bloque acciones login */
+.auth-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  row-gap: 1.25rem;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+
+/* Responsive: en móvil, solo panel derecho */
+@media (max-width: 991.98px) {
+  .auth-bg { display: none; }
+  .auth-panel { flex: 1 1 auto; }
+}
+
+/* ========= Tabla moderna ========= */
+.table-modern {
+  --tbl-radius: 14px;
+  border-collapse: separate;
+  border-spacing: 0;
+}
+.table-modern thead th {
+  position: sticky;
+  top: 0;
+  background: #f8f9fa;
+  z-index: 1;
+  font-weight: 600;
+  border-bottom: 1px solid #e9ecef !important;
+}
+.table-modern tr th:first-child,
+.table-modern tr td:first-child { padding-left: 16px; }
+.table-modern tr th:last-child,
+.table-modern tr td:last-child { padding-right: 16px; }
+.table-modern tbody tr:hover { background: #f7faff; }
+.table-wrap {
+  border-radius: var(--tbl-radius);
+  overflow: hidden;
+  border: 1px solid #eef2f6;
+}
+
+/* Badges de rol */
+.role-badge {
+  display: inline-block;
+  padding: 0.25rem 0.5rem;
+  border-radius: 999px;
+  font-size: .75rem;
+  font-weight: 600;
+  line-height: 1;
+  border: 1px solid transparent;
+}
+.role-badge.admin { color: #0d6efd; background: #e7f1ff; border-color: #bfd6ff; }
+.role-badge.user  { color: #198754; background: #e9f7ef; border-color: #ccebd9; }
+
+/* Botón-ícono acciones tabla */
+.btn-icon {
+  width: 36px; height: 36px;
+  display: inline-flex; align-items: center; justify-content: center;
+  border-radius: 10px;
+  border: 1px solid #dee2e6; background: #fff;
+}
+.btn-icon:hover { background: #f8f9fa; }
+
+/* ========= Navbar bonito ========= */
+.navbar-neitek {
+    background-image: url('/fondo.png'); /* <-- tu imagen */
+  box-shadow: 0 4px 16px rgba(0,0,0,.05);
+}
+.navbar-neitek .navbar-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+  font-weight: 700;
+}
+.brand-gif {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: 2px solid #0d6efd;
+  box-shadow: 0 2px 8px rgba(13,110,253,.25);
+  object-fit: cover;
+}
+.role-chip {
+  font-size: .75rem;
+  font-weight: 600;
+  padding: .25rem .5rem;
+  border-radius: 999px;
+  border: 1px solid transparent;
+}
+.role-chip.admin { color:#0d6efd; background:#e7f1ff; border-color:#bfd6ff; }
+.role-chip.user  { color:#198754; background:#e9f7ef; border-color:#ccebd9; }
+
+/* ========= Modal bonito (modal-neo) ========= */
+.modal-neo {
+  display: block;
+  background: rgba(0,0,0,.35);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  animation: fadeIn .15s ease;
+}
+@keyframes fadeIn { from { opacity: 0 } to { opacity: 1 } }
+
+.modal-neo .modal-dialog {
+  transform: translateY(10px);
+  animation: slideUp .2s ease forwards;
+}
+@keyframes slideUp { to { transform: translateY(0) } }
+
+.modal-neo .modal-content {
+  border-radius: 16px;
+  border: 1px solid #eef2f6;
+  box-shadow: 0 18px 48px rgba(16,24,40,.12);
+  overflow: hidden;
+}
+.modal-neo .modal-header {
+  padding: 16px 18px;
+  border-bottom: 1px solid #f0f2f5;
+  background: linear-gradient(180deg, #fbfdff 0%, #f5f8ff 100%);
+}
+.modal-neo .modal-title {
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+  font-weight: 700;
+  color: #0f172a;
+}
+.modal-neo .modal-body { padding: 16px 18px; }
+.modal-neo .modal-footer {
+  padding: 12px 18px;
+  border-top: 1px solid #f0f2f5;
+  background: #fafbff;
+}
+
+/* Botón de cerrar tipo ghost */
+.btn-close-ghost {
+  border: 1px solid transparent;
+  background: transparent;
+  border-radius: 10px;
+  width: 36px; height: 36px;
+  display: inline-flex; align-items: center; justify-content: center;
+}
+.btn-close-ghost:hover { background: #f1f3f5; }
+
+/* ===== Correcciones para form-floating + iconos/ojito ===== */
+.form-floating.input-with-icon { position: relative; }
+
+/* da espacio al label cuando hay icono y ojito */
+.form-floating.input-with-icon > label {
+  left: 2.75rem;                   /* empuja el label a la derecha del icono */
+  right: 3.25rem;                  /* deja espacio para el ojito */
+  padding: .5rem .25rem;           /* un poco de aire */
+  z-index: 2;                      /* por encima del input */
+  background: transparent;         /* el fondo “flota” sobre el input */
+}
+
+/* cuando el input está enfocado o tiene texto, el label sube y no se corta */
+.form-floating.input-with-icon > .form-control:focus ~ label,
+.form-floating.input-with-icon > .form-control:not(:placeholder-shown) ~ label {
+  transform: scale(.85) translateY(-.6rem) translateX(.15rem);
+  background: #fff;                /* poner fondo blanco debajo del label flotado */
+  border-radius: 6px;
+  padding: 0 .25rem;
+}
+
+/* icono izq y ojito der, bien centrados para floating */
+.form-floating.input-with-icon .icon-left {
+  position: absolute;
+  left: .75rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #6c757d;
+  font-size: 1.1rem;
+  pointer-events: none;
+  z-index: 3;
+}
+.form-floating.input-with-icon .toggle-eye-inside {
+  position: absolute;
+  right: .35rem;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 40px; height: 40px;
+  border: none; border-radius: 999px;
+  background: transparent;
+  color: #6c757d;
+  z-index: 3;
+}
+.form-floating.input-with-icon .toggle-eye-inside:hover { background: #f1f3f5; }
+
+/* el input mantiene padding para icono/ojito con floating */
+.form-floating.input-with-icon > .form-control,
+.form-floating.input-with-icon > .form-control.form-control-tall {
+  padding-left: 2.75rem !important;  /* icono */
+  padding-right: 3.25rem !important; /* ojito */
+  border-radius: 12px;
+}
+
+/* ===== Modal: evita que el contenido se tape y permite scroll si crece ===== */
+.modal-neo .modal-dialog { max-width: 520px; }              /* o modal-lg si necesitas más */
+.modal-neo .modal-content { max-height: 85dvh; }
+.modal-neo .modal-body { overflow: auto; }
+
+/* Centrar título y fijar close a la derecha sin desplazarlo */
+.modal-neo .modal-header.modal-header-centered {
+  position: relative;
+  display: block;                 /* evitamos el empuje del botón */
+  text-align: center;             /* centra contenido inline */
+  padding-right: 56px;            /* deja espacio virtual para el botón */
+  padding-left: 56px;             /* balancea por si hay icono a la izq */
+}
+
+.modal-neo .modal-title-center {
+  margin: 0;
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+}
+
+/* Botón de cerrar pegado a la derecha, centrado verticalmente */
+.modal-neo .modal-close-right {
+  position: absolute;
+  top: 50%;
+  right: 12px;
+  transform: translateY(-50%);
+  width: 36px; height: 36px;
+  border-radius: 10px;
+  display: inline-flex; align-items: center; justify-content: center;
+  border: none; background: transparent;
+  color: inherit;
+}
+.modal-neo .modal-close-right:hover { background: #f1f3f5; }
+
+/* Fondo global para sesiones autenticadas */
+.page {
+  background-image: url('/fondo.png'); /* <-- tu imagen */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;  /* efecto sutil al hacer scroll */
+  width: 100%;
+}
+
+/* Opcional: capa de suavizado para legibilidad */
+.app-surface {
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+  min-height: 100dvh;
+  padding-top: 1rem;
+  padding-bottom: 2rem;
+}
+
+/* Cards más legibles sobre fondo */
+.card.surface-elevated {
+  background: rgba(255,255,255,.9);
+  box-shadow: 0 10px 30px rgba(0,0,0,.06);
+  border: 1px solid rgba(255,255,255,.6);
+}
+
+.typo-wrap { position: relative; }
+.typo-subtitle { font-size: .95rem; }
+.typo-underline {
+  width: 56px; height: 4px; border-radius: 4px;
+  background: linear-gradient(90deg,#0d6efd 0%,#6ea8fe 100%);
+  margin-top: .5rem;
+}
+.typo-gradient{
+  background: linear-gradient(90deg,#0d6efd 0%,#6ea8fe 100%);
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+}
+
+.container1{
+  margin: 2% auto 0;           /* centra el contenedor */
+  width: min(100%, 1400px);     /* ancho fluido con límite */
+  text-align: center;
+}
